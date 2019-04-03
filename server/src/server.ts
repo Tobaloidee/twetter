@@ -11,6 +11,9 @@ import passport from "passport";
 // Passport config
 import PassportConfig from "./config/passport.config";
 
+// Routes
+import { userRoutes } from "./routes/UserRoutes";
+
 // Utils
 import Logger from "./utils/logger";
 
@@ -21,6 +24,7 @@ class Server {
     this.app = express();
     this.configureDatabase();
     this.configurePassport();
+    this.configureRoutes();
     this.configureMiddlewares();
   }
 
@@ -54,6 +58,10 @@ class Server {
   private configurePassport(): void {
     PassportConfig(passport);
     this.app.use(passport.initialize());
+  }
+
+  private configureRoutes(): void {
+    this.app.use("/api/users", userRoutes);
   }
 }
 

@@ -1,17 +1,17 @@
 // Imports
+import { PassportStatic } from "passport";
 import {
   ExtractJwt,
   JwtFromRequestFunction,
-  Strategy as JWTStrategy
+  Strategy as JwtStrategy
 } from "passport-jwt";
-import { PassportStatic } from "passport";
 
 // User Model
 import User from "../models/User";
 
 // Utils
-import Keys from "./keys.json";
 import Logger from "../utils/logger";
+import Keys from "./keys.json";
 
 // Define options object and interface
 interface IOptions {
@@ -26,7 +26,7 @@ const opts: IOptions = {
 
 export default async (passport: PassportStatic) => {
   passport.use(
-    new JWTStrategy(opts, async (jwt_payload, done) => {
+    new JwtStrategy(opts, async (jwt_payload, done) => {
       try {
         const user = await User.findById(jwt_payload.id);
         user ? done(null, user) : done(null, false);
