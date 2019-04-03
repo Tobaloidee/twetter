@@ -3,18 +3,38 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import cors from "cors";
 import express from "express";
+import mongoose from "mongoose";
 import helmet from "helmet";
+
+// Utils
+import Logger from "./utils/logger";
 
 class Server {
   private app: express.Application;
 
   constructor() {
     this.app = express();
+    this.configureDatabase();
     this.configureMiddlewares();
   }
 
   public get(): express.Application {
     return this.app;
+  }
+
+  private async configureDatabase(): Promise<void> {
+    try {
+      mongoose.connect("mongodb://localhost:27017/twetter", {
+        useCreateIndex: false,
+        useNewUrlParser: true
+      });
+
+      Logger.info(
+        "Connection to the database has been sucessfully established."
+      );
+    } catch (error) {
+      Logger.error(error);
+    }
   }
 
   private configureMiddlewares(): void {
