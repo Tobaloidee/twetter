@@ -32,6 +32,14 @@ $ yarn install
 
 To run the app you'll need [Docker](https://www.docker.com/)
 
+In order to be able to run the project you'll need to create a file named `keys.json` in `server/src/config`
+
+```json
+{
+  "secretOrKey": "put anything you want here"
+}
+```
+
 In the root of the app run the following command :
 
 ```
