@@ -9,6 +9,7 @@
     "url": "https://github.com/Julien-Broyard/twetter/issues"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "compression": "^1.7.4",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
@@ -17,6 +18,7 @@
   },
   "description": "A small and basic twitter clone made with MERN stack.",
   "devDependencies": {
+    "@types/body-parser": "^1.17.0",
     "@types/compression": "^0.0.36",
     "@types/express": "^4.16.1",
     "@types/helmet": "^0.0.43",
