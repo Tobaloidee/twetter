@@ -1,0 +1,24 @@
+{
+  "author": {
+    "email": "broyard.dev@gmail.com",
+    "name": "Julien Broyard",
+    "url": "https://github.com/Julien-Broyard"
+  },
+  "bugs": {
+    "email": "broyard.dev@gmail.com",
+    "url": "https://github.com/Julien-Broyard/twetter/issues"
+  },
+  "dependencies": {},
+  "description": "A small and basic twitter clone made with MERN stack.",
+  "devDependencies": {},
+  "homepage": "https://github.com/Julien-Broyard/twetter#readme",
+  "license": "MIT",
+  "name": "twetter",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Julien-Broyard/twetter"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}
