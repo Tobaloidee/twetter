@@ -1,5 +1,5 @@
 // Imports
-import express, { Router, Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
 
 // Controllers
 import { userController } from "../controllers/UserController";
