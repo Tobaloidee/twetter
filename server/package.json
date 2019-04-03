@@ -11,6 +11,8 @@
   "dependencies": {},
   "description": "A small and basic twitter clone made with MERN stack.",
   "devDependencies": {
+    "cross-env": "^5.2.0",
+    "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.4.1"
   },
   "homepage": "https://github.com/Julien-Broyard/twetter#readme",
@@ -21,6 +23,10 @@
     "type": "git",
     "url": "https://github.com/Julien-Broyard/twetter"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsnd --respawn src/index.ts",
+    "start:prod": "cross-env NODE_ENV=production yarn build && node dist/index.js"
+  },
   "version": "1.0.0"
 }
