@@ -33,7 +33,7 @@ class Server {
 
   private async configureDatabase(): Promise<void> {
     try {
-      mongoose.connect("mongodb://localhost:27017/twetter", {
+      mongoose.connect("mongodb://db:27017/twetter", {
         useCreateIndex: true,
         useNewUrlParser: true
       });

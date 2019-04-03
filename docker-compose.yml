@@ -1,0 +1,24 @@
+version: "3.1"
+
+services:
+  db:
+    container_name: twetter_db
+    image: mongo:4.0.8-xenial
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - "db-volume:/var/lib/db"
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: twetter_server
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-volume:
