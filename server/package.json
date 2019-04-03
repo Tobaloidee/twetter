@@ -10,7 +10,9 @@
   },
   "dependencies": {},
   "description": "A small and basic twitter clone made with MERN stack.",
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^3.4.1"
+  },
   "homepage": "https://github.com/Julien-Broyard/twetter#readme",
   "license": "MIT",
   "name": "twetter",
