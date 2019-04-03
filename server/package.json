@@ -25,10 +25,19 @@
     "@types/node": "^11.13.0",
     "@types/pino": "^5.8.6",
     "cross-env": "^5.2.0",
+    "husky": "^1.3.1",
+    "prettier": "^1.16.4",
     "ts-node-dev": "^1.0.0-pre.32",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.1"
   },
   "homepage": "https://github.com/Julien-Broyard/twetter#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
   "license": "MIT",
   "name": "twetter",
   "private": true,
@@ -37,9 +46,13 @@
     "url": "https://github.com/Julien-Broyard/twetter"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "yarn lint && tsc",
     "dev": "tsnd --respawn src/index.ts",
-    "start:prod": "cross-env NODE_ENV=production yarn build && node dist/index.js"
+    "lint": "yarn tslint && yarn prettier",
+    "pre-commit": "yarn lint",
+    "prettier": "prettier --write \"{,!(node_modules|dist|build|coverage)/**/}*.{js,jsx,ts,tsx,json}\"",
+    "start:prod": "cross-env NODE_ENV=production yarn build && node dist/index.js",
+    "tslint": "tslint --project tsconfig.json --fix"
   },
   "version": "1.0.0"
 }
