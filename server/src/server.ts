@@ -3,8 +3,8 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import cors from "cors";
 import express from "express";
-import mongoose from "mongoose";
 import helmet from "helmet";
+import mongoose from "mongoose";
 
 // Utils
 import Logger from "./utils/logger";
