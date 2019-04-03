@@ -1,10 +1,15 @@
 // Imports
+
 import bodyParser from "body-parser";
 import compression from "compression";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import mongoose from "mongoose";
+import passport from "passport";
+
+// Passport config
+import PassportConfig from "./config/passport.config";
 
 // Utils
 import Logger from "./utils/logger";
@@ -15,6 +20,7 @@ class Server {
   constructor() {
     this.app = express();
     this.configureDatabase();
+    this.configurePassport();
     this.configureMiddlewares();
   }
 
@@ -25,7 +31,7 @@ class Server {
   private async configureDatabase(): Promise<void> {
     try {
       mongoose.connect("mongodb://localhost:27017/twetter", {
-        useCreateIndex: false,
+        useCreateIndex: true,
         useNewUrlParser: true
       });
 
@@ -43,6 +49,11 @@ class Server {
     this.app.use(cors()); // TODO Set the origin later
     this.app.use(helmet());
     this.app.use(compression({ level: 6 }));
+  }
+
+  private configurePassport(): void {
+    PassportConfig(passport);
+    this.app.use(passport.initialize());
   }
 }
 
