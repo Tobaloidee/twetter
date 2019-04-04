@@ -34,14 +34,16 @@ class Server {
 
   private async configureDatabase(): Promise<void> {
     try {
-      mongoose.connect("mongodb://localhost:27017/twetter", {
-        useCreateIndex: true,
-        useNewUrlParser: true
-      });
-
-      Logger.info(
-        "Connection to the database has been sucessfully established."
-      );
+      await mongoose
+        .connect("mongodb://localhost:27017/twetter", {
+          useCreateIndex: true,
+          useNewUrlParser: true
+        })
+        .then(() =>
+          Logger.info(
+            "Connection to the database has been sucessfully established."
+          )
+        );
     } catch (error) {
       Logger.error(error);
     }
