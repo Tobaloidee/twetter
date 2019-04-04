@@ -1,5 +1,5 @@
 // Imports
-import { badRequest, notFound } from "boom";
+import { badRequest, notFound, internal } from "boom";
 import { Request, Response } from "express";
 
 // Models
@@ -45,6 +45,50 @@ export class MessageController {
       } else {
         return res.status(404).json(notFound("Message not found."));
       }
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
+
+  public async delete(req: Request, res: Response) {
+    try {
+      const message = await Message.findById(req.params.message_id);
+
+      if (message) {
+        await message.remove();
+        return res.status(200).json(message);
+      } else {
+        return res.status(404).json(notFound("Message not found."));
+      }
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
+
+  public async get(req: Request, res: Response) {
+    try {
+      const message = await Message.findById(req.params.message_id);
+
+      if (message) {
+        return res.status(200).json(message);
+      } else {
+        return res.status(404).json(notFound("Message not found."));
+      }
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
+
+  public async root(req: Request, res: Response) {
+    try {
+      const messages = await Message.find()
+        .sort({ createdAt: "desc" })
+        .populate("user", {
+          profileImageUrl: true,
+          username: true
+        });
+
+      return res.status(200).json(messages);
     } catch (error) {
       Logger.error(error);
     }
