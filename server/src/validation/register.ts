@@ -1,6 +1,6 @@
 // Imports
-import isEmpty from "./isEmpty";
 import Validator from "validator";
+import isEmpty from "./isEmpty";
 
 interface IRegisterErrorObject {
   email?: string;
@@ -11,7 +11,7 @@ interface IRegisterErrorObject {
 }
 
 export default (data: any) => {
-  let errors: IRegisterErrorObject = {};
+  const errors: IRegisterErrorObject = {};
 
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
