@@ -4,6 +4,9 @@ import { badRequest, internal, notFound } from "boom";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
+// Validation
+import validateRegisterInput from "../validation/register";
+
 // User Model
 import User from "../models/User";
 
@@ -55,6 +58,12 @@ export class UserController {
 
   public async register(req: Request, res: Response) {
     try {
+      const { errors, isValid } = validateRegisterInput(req.body);
+
+      if (!isValid) {
+        return res.status(400).json(badRequest("Bad Request", errors));
+      }
+
       const user = await User.findOne({ email: req.body.email });
 
       if (user) {
