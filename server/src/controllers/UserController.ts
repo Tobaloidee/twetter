@@ -1,7 +1,7 @@
 // Imports
+import argon2 from "argon2";
 import { badRequest } from "boom";
 import { Request, Response } from "express";
-import argon2 from "argon2";
 
 // User Model
 import User from "../models/User";
