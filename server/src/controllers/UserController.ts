@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
 // Validation
+import validateLoginInput from "../validation/login";
 import validateRegisterInput from "../validation/register";
 
 // User Model
@@ -17,6 +18,12 @@ import Logger from "../utils/logger";
 export class UserController {
   public async login(req: Request, res: Response) {
     try {
+      const { errors, isValid } = validateLoginInput(req.body);
+
+      if (!isValid) {
+        return res.status(400).json(badRequest("Bad Request", errors));
+      }
+
       const user = await User.findOne({ email: req.body.email });
 
       if (!user) {
