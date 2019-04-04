@@ -102,13 +102,6 @@
     "@types/mongodb" "*"
     "@types/node" "*"
 
-"@types/node-statsd@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@types/node-statsd/-/node-statsd-0.1.2.tgz#75aa05c65a22e06cc7d90747c8d6e7226aa8e563"
-  integrity sha512-xNR5ds3AwS+nd/RrC8ikcZsuPz7z6tpS75hYAWb7Bn3DjCrUZrx58BKw5Uub/h98NBCnA2TBq6Av/GAuZO7w7g==
-  dependencies:
-    "@types/node" "*"
-
 "@types/node@*", "@types/node@^11.13.0":
   version "11.13.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.0.tgz#b0df8d6ef9b5001b2be3a94d909ce3c29a80f9e1"
@@ -1493,11 +1486,6 @@ node-notifier@^4.0.2:
     semver "^5.1.0"
     shellwords "^0.1.0"
     which "^1.0.5"
-
-node-statsd@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/node-statsd/-/node-statsd-0.1.1.tgz#27a59348763d0af7a037ac2a031fef3f051013d3"
-  integrity sha1-J6WTSHY9CvegN6wqAx/vPwUQE9M=
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.5.0"
