@@ -16,6 +16,9 @@ export default (data: any) => {
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+  data.profileImageURL = !isEmpty(data.profileImageURL)
+    ? data.profileImageURL
+    : "";
   data.username = !isEmpty(data.username) ? data.username : "";
 
   if (Validator.isEmpty(data.email)) {
@@ -42,8 +45,16 @@ export default (data: any) => {
     }
   }
 
+  if (!Validator.isURL(data.profileImageURL)) {
+    errors.profileImageURL = "URL is not valid.";
+  }
+
   if (Validator.isEmpty(data.username)) {
     errors.username = "Username is required.";
+  }
+
+  if (!Validator.isLength(data.username, { min: 4, max: 50 })) {
+    errors.username = "Username must be between 4 and 50 characters.";
   }
 
   return {
