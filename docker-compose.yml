@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   db:
-    container_name: twetter_db
+    container_name: db
     image: mongo:4.0.8-xenial
     restart: always
     ports:
@@ -14,7 +14,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: twetter_server
+    container_name: server
     depends_on:
       - db
     ports:
