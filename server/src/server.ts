@@ -11,7 +11,8 @@ import passport from "passport";
 import PassportConfig from "./config/passport.config";
 
 // Routes
-import { userRoutes } from "./routes/UserRoutes";
+import { authRoutes } from "./routes/AuthRoutes";
+import { messageRoutes } from "./routes/MessageRoutes";
 
 // Utils
 import Logger from "./utils/logger";
@@ -60,7 +61,8 @@ class Server {
   }
 
   private configureRoutes(): void {
-    this.app.use("/api/user", userRoutes);
+    this.app.use("/api/auth", authRoutes);
+    this.app.use("/api/users", messageRoutes);
   }
 }
 

@@ -45,7 +45,10 @@ export default (data: any) => {
     }
   }
 
-  if (!Validator.isURL(data.profileImageURL)) {
+  if (
+    !isEmpty(data.profileImageURL) &&
+    !Validator.isURL(data.profileImageURL)
+  ) {
     errors.profileImageURL = "URL is not valid.";
   }
 

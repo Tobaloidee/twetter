@@ -2,9 +2,9 @@
 import express, { Request, Response, Router } from "express";
 
 // Controllers
-import { userController } from "../controllers/UserController";
+import { authController } from "../controllers/AuthController";
 
-class UserRoutes {
+class AuthRoutes {
   public router: Router = express.Router();
 
   constructor() {
@@ -13,13 +13,13 @@ class UserRoutes {
 
   private postRoutes(): void {
     this.router.post("/login", (req: Request, res: Response) =>
-      userController.login(req, res)
+      authController.login(req, res)
     );
 
     this.router.post("/register", (req: Request, res: Response) =>
-      userController.register(req, res)
+      authController.register(req, res)
     );
   }
 }
 
-export const userRoutes = new UserRoutes().router;
+export const authRoutes = new AuthRoutes().router;

@@ -15,7 +15,7 @@ import User from "../models/User";
 import Keys from "../config/keys.json";
 import Logger from "../utils/logger";
 
-export class UserController {
+export class AuthController {
   public async login(req: Request, res: Response) {
     try {
       const { errors, isValid } = validateLoginInput(req.body);
@@ -109,4 +109,4 @@ export class UserController {
   }
 }
 
-export const userController = new UserController();
+export const authController = new AuthController();
