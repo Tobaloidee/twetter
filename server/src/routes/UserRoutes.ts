@@ -12,6 +12,10 @@ class UserRoutes {
   }
 
   private postRoutes(): void {
+    this.router.post("/login", (req: Request, res: Response) =>
+      userController.login(req, res)
+    );
+
     this.router.post("/register", (req: Request, res: Response) =>
       userController.register(req, res)
     );
