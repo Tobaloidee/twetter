@@ -6,7 +6,9 @@ import express from "express";
 import expressPino from "express-pino-logger";
 import helmet from "helmet";
 import mongoose from "mongoose";
+import { StatsD } from "node-statsd";
 import passport from "passport";
+import responseTime from "response-time";
 
 // Passport config
 import PassportConfig from "./config/passport.config";
@@ -20,9 +22,16 @@ import Logger from "./utils/logger";
 
 class Server {
   private app: express.Application;
+  private stats: StatsD;
 
   constructor() {
     this.app = express();
+    this.stats = new StatsD();
+
+    this.stats.socket.on("error", err => {
+      Logger.error(err.message);
+    });
+
     this.configureDatabase();
     this.configurePassport();
     this.configureMiddlewares();
@@ -57,6 +66,17 @@ class Server {
     this.app.use(cors()); // TODO Set the origin later
     this.app.use(helmet());
     this.app.use(compression({ level: 6 }));
+    this.app.use(
+      responseTime((req, res, time) => {
+        if (req.method) {
+          const stat = (req.method + req.url)
+            .toLowerCase()
+            .replace(/[:.]/g, "")
+            .replace(/\//g, "_");
+          this.stats.timing(stat, time);
+        }
+      })
+    );
   }
 
   private configurePassport(): void {
