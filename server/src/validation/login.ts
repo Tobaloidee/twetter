@@ -1,6 +1,6 @@
 // Imports
-import isEmpty from "./isEmpty";
 import Validator from "validator";
+import isEmpty from "./isEmpty";
 
 interface ILoginErrorObject {
   email?: string;
@@ -8,7 +8,7 @@ interface ILoginErrorObject {
 }
 
 export default (data: any) => {
-  let errors: ILoginErrorObject = {};
+  const errors: ILoginErrorObject = {};
 
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
