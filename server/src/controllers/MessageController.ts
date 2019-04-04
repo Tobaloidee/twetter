@@ -1,6 +1,6 @@
 // Imports
-import { Request, Response } from "express";
 import { badRequest, notFound } from "boom";
+import { Request, Response } from "express";
 
 // Models
 import Message from "../models/Message";

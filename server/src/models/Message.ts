@@ -25,7 +25,7 @@ const MessageSchema: Schema<IMessage> = new mongoose.Schema({
 
 MessageSchema.pre<IMessage>("remove", async function(next) {
   try {
-    let user = await User.findById(this.user._id);
+    const user = await User.findById(this.user._id);
 
     if (user) {
       user.messages.remove(this.id);
