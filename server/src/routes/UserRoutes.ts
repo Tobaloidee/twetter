@@ -8,12 +8,12 @@ class UserRoutes {
   public router: Router = express.Router();
 
   constructor() {
-    this.getRoutes();
+    this.postRoutes();
   }
 
-  private getRoutes(): void {
-    this.router.get("/", (req: Request, res: Response) =>
-      userController.root(req, res)
+  private postRoutes(): void {
+    this.router.post("/register", (req: Request, res: Response) =>
+      userController.register(req, res)
     );
   }
 }

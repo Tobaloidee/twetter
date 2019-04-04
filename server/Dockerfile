@@ -11,8 +11,7 @@ RUN apk --no-cache --virtual build-dependencies add \
   make \
   g++ \
   && yarn install \
-  && yarn global add typescript ts-node-dev \
-  && apk del build-dependencies
+  && yarn global add typescript ts-node-dev
 
 COPY . .
 

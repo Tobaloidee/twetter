@@ -23,8 +23,8 @@ class Server {
     this.app = express();
     this.configureDatabase();
     this.configurePassport();
-    this.configureRoutes();
     this.configureMiddlewares();
+    this.configureRoutes();
   }
 
   public get(): express.Application {
@@ -33,7 +33,7 @@ class Server {
 
   private async configureDatabase(): Promise<void> {
     try {
-      mongoose.connect("mongodb://db:27017/twetter", {
+      mongoose.connect("mongodb://localhost:27017/twetter", {
         useCreateIndex: true,
         useNewUrlParser: true
       });
@@ -60,7 +60,7 @@ class Server {
   }
 
   private configureRoutes(): void {
-    this.app.use("/api/users", userRoutes);
+    this.app.use("/api/user", userRoutes);
   }
 }
 
