@@ -1,5 +1,5 @@
 // Imports
-import { badRequest, notFound, internal } from "boom";
+import { badRequest, internal, notFound } from "boom";
 import { Request, Response } from "express";
 
 // Models
