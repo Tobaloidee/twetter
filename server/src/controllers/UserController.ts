@@ -1,7 +1,7 @@
 // Imports
+import argon2 from "argon2";
 import { badRequest, internal, notFound } from "boom";
 import { Request, Response } from "express";
-import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 
 // User Model
@@ -34,12 +34,13 @@ export class UserController {
           Keys.secretOrKey,
           { expiresIn: 3600 },
           (err, token) => {
-            if (err)
+            if (err) {
               return res
                 .status(500)
                 .json(
                   internal("An error occured while signing the jwt token.")
                 );
+            }
 
             return res.status(200).json({ token: `Bearer ${token}` });
           }
