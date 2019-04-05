@@ -5,9 +5,11 @@ import cors from "cors";
 import express from "express";
 import expressPino from "express-pino-logger";
 import helmet from "helmet";
-import mongoose from "mongoose";
 import passport from "passport";
 import responseTime from "response-time";
+
+// Database
+import Database from "./database";
 
 // Passport config
 import PassportConfig from "./config/passport.config";
@@ -24,7 +26,7 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.configureDatabase();
+    Database.connectDatabase();
     this.configurePassport();
     this.configureMiddlewares();
     this.configureRoutes();
@@ -32,23 +34,6 @@ class Server {
 
   public get(): express.Application {
     return this.app;
-  }
-
-  private async configureDatabase(): Promise<void> {
-    try {
-      await mongoose
-        .connect("mongodb://localhost:27017/twetter", {
-          useCreateIndex: true,
-          useNewUrlParser: true
-        })
-        .then(() =>
-          Logger.info(
-            "Connection to the database has been sucessfully established."
-          )
-        );
-    } catch (error) {
-      Logger.error(error);
-    }
   }
 
   private configureMiddlewares(): void {
