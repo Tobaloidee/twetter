@@ -17,7 +17,11 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-redux": "^6.0.1",
+    "react-scripts": "2.1.8",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "description": "A small and basic twitter clone made with MERN stack.",
   "devDependencies": {
@@ -25,6 +29,7 @@
     "@types/node": "^11.13.0",
     "@types/react": "^16.8.12",
     "@types/react-dom": "^16.8.3",
+    "@types/react-redux": "^7.0.6",
     "typescript": "^3.4.1"
   },
   "eslintConfig": {
