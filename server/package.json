@@ -56,7 +56,7 @@
     }
   },
   "license": "MIT",
-  "name": "twetter",
+  "name": "twetter-server",
   "private": true,
   "repository": {
     "type": "git",

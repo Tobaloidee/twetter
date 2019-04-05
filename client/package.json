@@ -1,0 +1,49 @@
+{
+  "author": {
+    "email": "broyard.dev@gmail.com",
+    "name": "Julien Broyard",
+    "url": "https://github.com/Julien-Broyard"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "bugs": {
+    "email": "broyard.dev@gmail.com",
+    "url": "https://github.com/Julien-Broyard/twetter/issues"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "2.1.8"
+  },
+  "description": "A small and basic twitter clone made with MERN stack.",
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.0",
+    "@types/react": "^16.8.12",
+    "@types/react-dom": "^16.8.3",
+    "typescript": "^3.4.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "homepage": "https://github.com/Julien-Broyard/twetter#readme",
+  "license": "MIT",
+  "name": "twetter-client",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Julien-Broyard/twetter"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "version": "1.0.0"
+}
