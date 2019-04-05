@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import Logger from "./utils/logger";
 
 export default class Database {
-  public static async connectDatabase() {
+  public static async connectDatabase(): Promise<void> {
     try {
       mongoose.connection.once("connected", () => {
         Logger.info(
@@ -17,7 +17,7 @@ export default class Database {
 
       process.on("SIGINT", async () => {
         await mongoose.connection.close(() => {
-          Logger.info(
+          Logger.warn(
             "Mongoose default connection disconnected through app termination."
           );
           process.exit(0);
